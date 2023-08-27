@@ -5,7 +5,6 @@
 <script setup lang="ts">
 import Artplayer from "artplayer";
 import artplayerPluginDanmaku from "artplayer-plugin-danmuku";
-import mpegts from 'mpegts.js';
 import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue';
 import liveDan from "./Danmaku.vue";
 
@@ -25,7 +24,8 @@ const props = defineProps({
 const instance = ref<Artplayer | null>(null);
 const artRef = ref<any>(null);
 
-onMounted(() => {
+onMounted(async () => {
+    let mpegts = (await import("mpegts.js")).default;
     let dispose: (() => void) | null | undefined = null;
     let art = new Artplayer({
         url: undefined as any,
@@ -52,7 +52,9 @@ onMounted(() => {
                         isLive: true,
                     }, {
                         liveBufferLatencyChasing: true,
+                        enableStashBuffer: false,
                         lazyLoadMaxDuration: 10,
+                        lazyLoad: true,
                     });
                     mpegtsPlayer.attachMediaElement(video);
                     mpegtsPlayer.load();

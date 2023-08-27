@@ -58,9 +58,6 @@ onMounted(async () => {
         fullscreenWeb: true,
         autoSize: false,
         playsInline: true,
-        setting: true,
-        pip: true,
-        lang: "zh-cn",
         customType: {
             mpegts: function (video, url) {
                 console.log(url);

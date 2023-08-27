@@ -17,6 +17,19 @@ export default {
             autoplay: false,
             autoMini: false,
             volume: 1,
+            pip: true,
+            lang: "zh-cn",
+            quality: [
+                {
+                    default: true,
+                    html: 'IPv4',
+                    url: 'https://live4.b11p.com/live/livestream.flv',
+                },
+                {
+                    html: 'Cloudflare',
+                    url: 'https://live-cf.b11p.com/live/livestream.flv',
+                },
+            ],
         };
         return {
             option: option,

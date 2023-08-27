@@ -14,17 +14,6 @@ mpegts.js 估计延迟 2 秒。
 
 ---
 ### 直播内容
-#### 计算机网络
-科普计算机网络知识。
-
-第二节在北京时间 4 月 2 日周日晚上 8 点，会讲物理层、数据链路层，没听过第一节课也不会有影响！
-
-课程资料（包含录播等）: https://notes.bleatingsheep.org/s/computer-network
-
-订阅链接（但是可能没有人会用）
-
-https://outlook.live.com/owa/calendar/00000000-0000-0000-0000-000000000000/078f1c11-205c-496e-996e-30b0a5b1ffc9/cid-D8FD15B2A646FB32/calendar.ics
-
 #### 游戏直播
 每次从下面的游戏里选一个播，可以留言写下想看的游戏，或者在弹幕实时互动，我会播大家喜欢的~~那不就是黄油吗，这可不兴播啊~~（x
 
@@ -42,6 +31,17 @@ https://outlook.live.com/owa/calendar/00000000-0000-0000-0000-000000000000/078f1
 - Baba Is You
 - 还有其他的小游戏
 - ~~舞力全开~~没摄像头没场地
+
+#### 计算机网络
+科普计算机网络知识。
+
+第二节在北京时间 4 月 2 日周日晚上 8 点，会讲物理层、数据链路层，没听过第一节课也不会有影响！
+
+课程资料（包含录播等）: https://notes.bleatingsheep.org/s/computer-network
+
+订阅链接（但是可能没有人会用）
+
+https://outlook.live.com/owa/calendar/00000000-0000-0000-0000-000000000000/078f1c11-205c-496e-996e-30b0a5b1ffc9/cid-D8FD15B2A646FB32/calendar.ics
 
 ---
 TODO:

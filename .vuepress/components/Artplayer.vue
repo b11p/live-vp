@@ -57,6 +57,7 @@ onMounted(async () => {
         setting: true,
         pip: true,
         volume: 1,
+        lang: "zh-cn",
         customType: {
             mpegts: function (video, url) {
                 console.log(url);

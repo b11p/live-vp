@@ -47,16 +47,13 @@ onMounted(async () => {
     art = new Artplayer({
         url: undefined as any,
 
-        isLive: false,
-        autoplay: true,
-        autoMini: true,
+        isLive: true,
         fullscreen: true,
         fullscreenWeb: true,
         autoSize: false,
         playsInline: true,
         setting: true,
         pip: true,
-        volume: 1,
         lang: "zh-cn",
         customType: {
             mpegts: function (video, url) {

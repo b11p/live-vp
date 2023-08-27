@@ -13,6 +13,10 @@ export default {
             url: 'https://live-flv.b11p.com/live/livestream.flv',
             type: "mpegts",
             theme: "#ea94b5",
+            isLive: false,
+            autoplay: true,
+            autoMini: true,
+            volume: 1,
         };
         return {
             option: option,

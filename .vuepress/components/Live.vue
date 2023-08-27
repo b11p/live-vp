@@ -15,7 +15,7 @@ export default {
             theme: "#ea94b5",
             isLive: false,
             autoplay: false,
-            autoMini: true,
+            autoMini: false,
             volume: 1,
         };
         return {

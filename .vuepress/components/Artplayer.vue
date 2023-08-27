@@ -81,13 +81,22 @@ onMounted(async () => {
                         });
 
                         // configure error handling
-                        mpegtsPlayer.on(mpegts.Events.ERROR, () => {
+                        mpegtsPlayer.on(mpegts.Events.ERROR, (t, u, v) => {
+                            console.error({ t, u, v });
+                            console.error(v);
                             let isPlaying = !art.video.paused;
-                            console.log(isPlaying);
-                            reload();
-                            if (isPlaying) {
-                                art.play();
-                            }
+                            console.log("isPlaying: " + isPlaying);
+                            setTimeout(() => {
+                                reload();
+                                if (isPlaying) {
+                                    art.play();
+                                }
+                            }, 1000); // 必须设置延迟重载，否则 Firefox 会拦截间隔过短的网络请求。
+                            // Firefox 中，mpegts.js 第一次加载会报一个错，即使网络没有问题。
+                            // 如果此处不设置延时的话，Firefox 依然会拦截请求，导则视频完全无法加载。
+                            // 实际上，第一次报的错不处理也可以播放，但是无法从报错类型上将其区分开来。
+                            // flv.js 也有类似的报错。
+                            // 可能是 Firefox 或者 flv.js 的 bug。
                         });
 
                         mpegtsPlayer.attachMediaElement(video);

@@ -11,6 +11,8 @@ export default {
         let option: Option = {
             container: '.artplayer-app',
             url: 'https://live-flv.b11p.com/live/livestream.flv',
+            type: "mpegts",
+            theme: "#ea94b5",
         };
         return {
             option: option,

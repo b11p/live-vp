@@ -47,7 +47,6 @@ onMounted(async () => {
     art = new Artplayer({
         url: undefined as any,
 
-        type: "mpegts",
         isLive: false,
         autoplay: true,
         autoMini: true,
@@ -56,6 +55,8 @@ onMounted(async () => {
         autoSize: false,
         playsInline: true,
         setting: true,
+        pip: true,
+        volume: 1,
         customType: {
             mpegts: function (video, url) {
                 console.log(url);
@@ -106,7 +107,7 @@ onMounted(async () => {
                 // filter: (danmu) => danmu.text.length < 50, // 弹幕过滤函数
                 lockTime: 1,
                 maxLength: 500,
-                minWidth: 0,
+                minWidth: 200,
                 maxWidth: 0,
                 theme: "light",
                 ...props.danmakuOption,
@@ -114,6 +115,8 @@ onMounted(async () => {
         ],
         ...props.option,
         container: artRef.value,
+    }, function onReady(art) {
+        this.play();
     });
     art.on("video:ended", onVideoEnded);
     instance.value = art;

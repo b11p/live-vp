@@ -27,7 +27,24 @@ const artRef = ref<any>(null);
 onMounted(async () => {
     let mpegts = (await import("mpegts.js")).default;
     let dispose: (() => void) | null | undefined = null;
-    let art = new Artplayer({
+    let reload: () => void;
+    let art: Artplayer;
+    let onVideoEnded = e => {
+        // if (dispose) {
+        //     dispose();
+        //     dispose = null;
+        // }
+        // if (!art.isDestroy) {
+        //     art.destroy(false);
+        // }
+        // InitArtplayer();
+        if (reload) {
+            reload();
+        }
+        console.log("ended");
+    };
+    // function InitArtplayer() {
+    art = new Artplayer({
         url: undefined as any,
 
         type: "mpegts",
@@ -43,26 +60,34 @@ onMounted(async () => {
             mpegts: function (video, url) {
                 console.log(url);
                 if (mpegts.getFeatureList().mseLivePlayback) {
-                    if (dispose)
-                        dispose();
-                    console.log("Loading mpegts player");
-                    let mpegtsPlayer = mpegts.createPlayer({
-                        type: 'flv',
-                        url: url,
-                        isLive: true,
-                    }, {
-                        liveBufferLatencyChasing: true,
-                        enableStashBuffer: false,
-                        lazyLoadMaxDuration: 10,
-                        lazyLoad: true,
-                    });
-                    mpegtsPlayer.attachMediaElement(video);
-                    mpegtsPlayer.load();
-                    dispose = () => {
-                        mpegtsPlayer.unload();
-                        mpegtsPlayer.detachMediaElement();
-                        mpegtsPlayer.destroy();
+                    reload = () => {
+                        if (dispose)
+                            dispose();
+                        console.log("Loading mpegts player");
+                        let mpegtsPlayer = mpegts.createPlayer({
+                            type: 'flv',
+                            url: url,
+                            isLive: true,
+                        }, {
+                            liveBufferLatencyChasing: true,
+                            enableStashBuffer: false,
+                            lazyLoadMaxDuration: 10,
+                            lazyLoad: true,
+                        });
+
+                        // configure error handling
+                        mpegtsPlayer.on(mpegts.Events.ERROR, reload);
+
+                        mpegtsPlayer.attachMediaElement(video);
+                        mpegtsPlayer.load();
+                        dispose = () => {
+                            mpegtsPlayer.unload();
+                            mpegtsPlayer.detachMediaElement();
+                            mpegtsPlayer.destroy();
+                            dispose = null;
+                        };
                     };
+                    reload();
                 }
             },
         },
@@ -90,7 +115,10 @@ onMounted(async () => {
         ...props.option,
         container: artRef.value,
     });
+    art.on("video:ended", onVideoEnded);
     instance.value = art;
+    // }
+    // InitArtplayer();
     nextTick(() => {
         emit('get-instance', instance.value);
     });

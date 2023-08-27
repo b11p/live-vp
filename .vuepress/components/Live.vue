@@ -14,7 +14,7 @@ export default {
             type: "mpegts",
             theme: "#ea94b5",
             isLive: false,
-            autoplay: true,
+            autoplay: false,
             autoMini: true,
             volume: 1,
         };

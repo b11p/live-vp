@@ -29,6 +29,11 @@ onMounted(async () => {
     let dispose: (() => void) | null | undefined = null;
     let reload: () => void;
     let art: Artplayer;
+    let destroyDanmaku = () => {
+        if (art.plugins.artplayerPluginDanmuku) {
+            art.plugins.artplayerPluginDanmuku.config({}).queue = [];
+        }
+    }
     let onVideoEnded = e => {
         // if (dispose) {
         //     dispose();
@@ -40,6 +45,7 @@ onMounted(async () => {
         // InitArtplayer();
         if (reload) {
             reload();
+            art.play();
         }
         console.log("ended");
     };
@@ -75,7 +81,14 @@ onMounted(async () => {
                         });
 
                         // configure error handling
-                        mpegtsPlayer.on(mpegts.Events.ERROR, reload);
+                        mpegtsPlayer.on(mpegts.Events.ERROR, () => {
+                            let isPlaying = !art.video.paused;
+                            console.log(isPlaying);
+                            reload();
+                            if (isPlaying) {
+                                art.play();
+                            }
+                        });
 
                         mpegtsPlayer.attachMediaElement(video);
                         mpegtsPlayer.load();
@@ -85,6 +98,7 @@ onMounted(async () => {
                             mpegtsPlayer.destroy();
                             dispose = null;
                         };
+                        destroyDanmaku();
                     };
                     reload();
                 }

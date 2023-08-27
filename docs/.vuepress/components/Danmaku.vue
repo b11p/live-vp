@@ -1,17 +1,6 @@
 <script lang="ts">
 import * as signalR from "@microsoft/signalr";
 
-const props = defineProps({
-    url: {
-        type: String,
-        required: true,
-    },
-    group: {
-        type: String,
-        required: true,
-    }
-});
-
 export default function (url, group, onMessage, onBacklogMessages): { send: (message: any) => void; connection: signalR.HubConnection; } {
     console.log("constructing liveDan");
     let recentReceivedDanmaku = new Date(new Date().getTime() - 14400000); // recent 4 hours

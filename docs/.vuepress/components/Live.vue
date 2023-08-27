@@ -1,5 +1,5 @@
 <template>
-    <Artplayer @get-instance="getInstance" :option="option" :style="style" />
+    <Artplayer @get-instance="getInstance" :option="option" :style="style" :danmaku-option="danmakuOption" />
 </template>
 
 <script lang="ts">
@@ -22,6 +22,9 @@ export default {
                 // height: "auto",
                 margin: "0",
             },
+            danmakuOption: {
+                group: "4463403c-aff8-c16d-0933-4636405ff116",
+            }
         };
     },
     components: {

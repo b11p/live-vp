@@ -76,7 +76,13 @@ onMounted(() => {
                 antiOverlap: true, // 是否防重叠
                 useWorker: false, // 是否使用 web worker
                 synchronousPlayback: false, // 是否同步到播放速度
-                filter: (danmu) => danmu.text.length < 50, // 弹幕过滤函数
+                // filter: (danmu) => danmu.text.length < 50, // 弹幕过滤函数
+                lockTime: 1,
+                maxLength: 500,
+                minWidth: 0,
+                maxWidth: 0,
+                theme: "light",
+                ...props.danmakuOption,
             })
         ],
         ...props.option,
@@ -90,7 +96,7 @@ onMounted(() => {
     // config danmaku
     var danmakuSingleton = liveDan(
         "https://live-danmaku.b11p.com/danmakuHub",
-        "4463403c-aff8-c16d-0933-4636405ff116",
+        props.danmakuOption.group,
         function (user, dan) {
             // dan.border = false;
             dan.time = undefined;

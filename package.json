@@ -18,6 +18,7 @@
     "@microsoft/signalr": "^7.0.10",
     "artplayer": "^5.0.9",
     "artplayer-plugin-danmuku": "^5.0.1",
+    "hls.js": "^1.4.12",
     "mpegts.js": "^1.7.3"
   }
 }

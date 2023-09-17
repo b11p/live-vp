@@ -11,7 +11,7 @@ export default {
         let option: Option = {
             container: '.artplayer-app',
             url: 'https://live-flv.b11p.com/live/livestream.flv',
-            type: "mpegts",
+            // type: "mpegts",
             theme: "#ea94b5",
             isLive: false,
             autoplay: false,
@@ -28,6 +28,10 @@ export default {
                 {
                     html: 'Cloudflare',
                     url: 'https://live-cf.b11p.com/live/livestream.flv',
+                },
+                {
+                    html: "HLS (iOS 兼容)",
+                    url: "https://live-flv.b11p.com/live/livestream.m3u8",
                 },
             ],
         };

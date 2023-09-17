@@ -6,6 +6,7 @@
 import Artplayer from "artplayer";
 import artplayerPluginDanmaku from "artplayer-plugin-danmuku";
 import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue';
+import Hls from 'hls.js'
 import liveDan from "./Danmaku.vue";
 
 const emit = defineEmits(['get-instance']);
@@ -59,7 +60,7 @@ onMounted(async () => {
         autoSize: false,
         playsInline: true,
         customType: {
-            mpegts: function (video, url) {
+            flv: function (video, url) {
                 console.log(url);
                 if (mpegts.getFeatureList().mseLivePlayback) {
                     reload = () => {
@@ -109,6 +110,28 @@ onMounted(async () => {
                     reload();
                 }
             },
+            m3u8: function (video, url) {
+                console.log(url);
+                if (Hls.isSupported()) {
+                    reload = () => {
+                        if (dispose)
+                            dispose();
+                        console.log("Loading hls player");
+                        const hls = new Hls();
+                        hls.loadSource(url);
+                        hls.attachMedia(video);
+                        dispose = () => {
+                            hls.detachMedia();
+                            hls.destroy();
+                            dispose = null;
+                        };
+                        destroyDanmaku();
+                    };
+                    reload();
+                } else {
+                    art.notice.show = 'Unsupported playback format: m3u8';
+                }
+            },
         },
         plugins: [
             artplayerPluginDanmaku({
@@ -137,6 +160,9 @@ onMounted(async () => {
         this.play();
     });
     art.on("video:ended", onVideoEnded);
+    art.on('destroy', () => {
+        if (dispose) dispose();
+    });
     instance.value = art;
     // }
     // InitArtplayer();

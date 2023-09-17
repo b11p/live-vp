@@ -116,13 +116,15 @@ onMounted(async () => {
                     reload = () => {
                         if (dispose)
                             dispose();
-                        if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                            console.log("Using native browser support");
-                            video.src = url;
-                        }
-                        else {
+                        if (Hls.isSupported()) {
                             console.log("Loading hls player");
-                            const hls = new Hls();
+                            const hls = new Hls({
+                                liveSyncDuration: 10,
+                                liveMaxLatencyDuration: 20,
+                                maxLiveSyncPlaybackRate: 1, // 在 iOS 上会造成问题
+                                lowLatencyMode: true,
+                                liveDurationInfinity: true,
+                            });
                             hls.loadSource(url);
                             hls.attachMedia(video);
                             dispose = () => {
@@ -130,6 +132,10 @@ onMounted(async () => {
                                 hls.destroy();
                                 dispose = null;
                             };
+                        }
+                        else {
+                            console.log("Using native browser support");
+                            video.src = url;
                         }
                         destroyDanmaku();
                     };

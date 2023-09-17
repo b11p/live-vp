@@ -4,7 +4,7 @@
 
 <Live></Live>
 
-前端使用 Artplayer 播放器，弹幕历史、用户名编辑、iOS 兼容模式等功能未移植完成。
+前端使用 Artplayer 播放器，弹幕历史、用户名编辑等功能未移植完成。
 
 mpegts.js 估计延迟 2 秒。
 
@@ -66,10 +66,10 @@ TODO:
 - ~~调查 Firefox 刷新后无法播放的问题~~*已缓解*
     - 若出现此情况请清空缓存，或者换用 Edge
 - 不同播放格式
-    - ~~HLS (for iOS)~~done
+    - ~~HLS (for iOS)~~ done
     - Webrtc（延迟比 mpegts.js 还要低）
         - delayed
-        - SRS 音频格式转换会导致轻微的音视频不同步，推迟到使用 WHIP/WHEP 推流时再使用
+        - SRS 音频格式转换会导致轻微的音视频不同步，推迟到 WHIP/WHEP
     - 使用不同格式时显示不同的延迟信息（如 HLS 延迟较高）
 - 加载并显示最近一段时间的弹幕
 - 显示并更改当前的用户名
@@ -80,6 +80,7 @@ TODO:
 ### 软件
 
 - 播放器：[ArtPlayer](https://artplayer.org/document/)
+- 直播前台：<https://github.com/b11p/live-vp>
 - 直播后台：[SRS](https://github.com/ossrs/srs)
 - 弹幕后台：<https://github.com/b11p/bleatingsheep.Danmaku>（自制）
 

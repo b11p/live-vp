@@ -121,10 +121,29 @@ onMounted(async () => {
                             const hls = new Hls({
                                 liveSyncDuration: 10,
                                 liveMaxLatencyDuration: 20,
-                                maxLiveSyncPlaybackRate: 1, // 在 iOS 上会造成问题
-                                lowLatencyMode: true,
+                                // maxLiveSyncPlaybackRate: 1, // 在 iOS 上会造成问题
+                                // lowLatencyMode: true,
                                 liveDurationInfinity: true,
                             });
+
+                            // error
+                            hls.on(Hls.Events.ERROR, (e, d) => {
+                                console.error({ e, d });
+                                if (!d.fatal) {
+                                    return;
+                                }
+                                let isPlaying = !art.video.paused;
+                                console.log("isPlaying: " + isPlaying);
+                                setTimeout(() => {
+                                    reload();
+                                    if (isPlaying) {
+                                        art.play();
+                                    }
+                                }, 1000);
+                            });
+
+                            console.log(hls);
+
                             hls.loadSource(url);
                             hls.attachMedia(video);
                             dispose = () => {

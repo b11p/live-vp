@@ -112,19 +112,25 @@ onMounted(async () => {
             },
             m3u8: function (video, url) {
                 console.log(url);
-                if (Hls.isSupported()) {
+                if (Hls.isSupported() || video.canPlayType('application/vnd.apple.mpegurl')) {
                     reload = () => {
                         if (dispose)
                             dispose();
-                        console.log("Loading hls player");
-                        const hls = new Hls();
-                        hls.loadSource(url);
-                        hls.attachMedia(video);
-                        dispose = () => {
-                            hls.detachMedia();
-                            hls.destroy();
-                            dispose = null;
-                        };
+                        if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                            console.log("Using native browser support");
+                            video.src = url;
+                        }
+                        else {
+                            console.log("Loading hls player");
+                            const hls = new Hls();
+                            hls.loadSource(url);
+                            hls.attachMedia(video);
+                            dispose = () => {
+                                hls.detachMedia();
+                                hls.destroy();
+                                dispose = null;
+                            };
+                        }
                         destroyDanmaku();
                     };
                     reload();

@@ -211,10 +211,12 @@ onMounted(async () => {
             dan.color = '#FFFFFF';
             console.log(dan);
             art.plugins.artplayerPluginDanmuku.emit(dan);
+            props.danmakuOption.AddDanmakuHistory(user, dan.text);
         },
         function (danmakuList) {
             for (let currentDan of danmakuList) {
                 // addDanmakuHistory(currentDan.user, currentDan.data.text, currentDan.time_stamp)
+                props.danmakuOption.AddDanmakuHistory(currentDan.user, currentDan.data.text);
             }
         },
     );
@@ -223,7 +225,11 @@ onMounted(async () => {
     // });
     art.on('artplayerPluginDanmuku:emit' as any, (danmu) => {
         danmakuSingleton.send(danmu);
-        // addDanmakuHistory("我", danmu.text);
+        if (props.danmakuOption.AddDanmakuHistory) {
+            console.log("Adding danmaku history:");
+            console.log(danmu.text);
+            props.danmakuOption.AddDanmakuHistory("我", danmu.text);
+        }
     });
 });
 

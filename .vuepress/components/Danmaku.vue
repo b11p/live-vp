@@ -7,7 +7,7 @@ export default function (url, group, onMessage, onBacklogMessages): { send: (mes
     var connection = new signalR.HubConnectionBuilder().withUrl(url).withAutomaticReconnect().build();
     connection.onreconnected(function () {
         connection.invoke('JoinGroup', group).catch(err => console.error(err))
-            .then(() => connection.invoke("GetRecentDanmaku", "4463403c-aff8-c16d-0933-4636405ff116", recentReceivedDanmaku))
+            .then(() => connection.invoke("GetRecentDanmaku", group, recentReceivedDanmaku))
             .then(r => {
                 if (new Date() > recentReceivedDanmaku) {
                     recentReceivedDanmaku = new Date();
@@ -21,7 +21,7 @@ export default function (url, group, onMessage, onBacklogMessages): { send: (mes
     var tryStart = () => {
         connection.start()
             .then(() => connection.invoke('JoinGroup', group).catch(err => console.error(err)))
-            .then(() => connection.invoke("GetRecentDanmaku", "4463403c-aff8-c16d-0933-4636405ff116", recentReceivedDanmaku))
+            .then(() => connection.invoke("GetRecentDanmaku", group, recentReceivedDanmaku))
             .then(r => {
                 if (onBacklogMessages) {
                     onBacklogMessages(r);

@@ -1,10 +1,13 @@
 <template>
-    <details style="width: 100%;">
-        <summary>弹幕历史</summary>
-        <p v-for="danmaku in danmakuList" :key="danmaku.id">
-            {{ danmaku.text }}
-        </p>
-    </details>
+    <div>
+        <p></p>
+        <details style="width: 100%;">
+            <summary>弹幕历史</summary>
+            <p v-for="danmaku in danmakuList" :key="danmaku.id">
+                {{ danmaku.text }}
+            </p>
+        </details>
+    </div>
 </template>
 
 <script setup lang="ts">

@@ -1,10 +1,14 @@
 <template>
     <Artplayer @get-instance="getInstance" :option="option" :style="style" :danmaku-option="danmakuOption" />
+    <DanmakuComponent ref="DanmakuComp" />
 </template>
 
 <script lang="ts">
 import Artplayer from "./Artplayer.vue";
+import DanmakuComponent from "./DanmakuComponent.vue";
 import type Option from 'artplayer/types/option';
+
+let danmakuId = 0;
 
 export default {
     data() {
@@ -13,7 +17,7 @@ export default {
             url: 'https://live-flv.b11p.com/live/mygo.flv',
             // type: "mpegts",
             theme: "#ea94b5",
-            isLive: false,
+            isLive: true,
             autoplay: false,
             autoMini: false,
             volume: 1,
@@ -46,12 +50,20 @@ export default {
                 margin: "0",
             },
             danmakuOption: {
-                group: "4463403c-aff8-c16d-0933-4636405ff116",
-            }
+                group: "109ad6e8-9729-459a-81b8-d79eae370412",
+                AddDanmakuHistory: (name: string, text: string) => {
+                    console.log("Push danmaku");
+                    this.$refs.DanmakuComp!.PushDanmaku({
+                        id: danmakuId++,
+                        text: name + ": " + text,
+                    });
+                },
+            },
         };
     },
     components: {
         Artplayer,
+        DanmakuComponent,
     },
     methods: {
         getInstance(art: any) {

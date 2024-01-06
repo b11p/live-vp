@@ -16,9 +16,9 @@ export default {
     data() {
         let option: Option = {
             container: '.artplayer-app',
-            url: 'https://live-flv.b11p.com/live/mygo.flv',
+            url: 'https://live-flv.b11p.com/live/mujica.flv',
             // type: "mpegts",
-            theme: "#3388bb",
+            theme: "#881144",
             isLive: true,
             autoplay: false,
             autoMini: false,
@@ -29,15 +29,15 @@ export default {
                 {
                     default: true,
                     html: 'IPv4',
-                    url: 'https://live4.b11p.com/live/mygo.flv',
+                    url: 'https://live4.b11p.com/live/mujica.flv',
                 },
                 {
                     html: 'Cloudflare',
-                    url: 'https://live-cf.b11p.com/live/mygo.flv',
+                    url: 'https://live-cf.b11p.com/live/mujica.flv',
                 },
                 {
                     html: "HLS (iOS 兼容)",
-                    url: "https://live-flv.b11p.com/live/mygo.m3u8",
+                    url: "https://live-flv.b11p.com/live/mujica.m3u8",
                 },
             ],
         };
@@ -52,7 +52,7 @@ export default {
                 margin: "0",
             },
             danmakuOption: {
-                group: "109ad6e8-9729-459a-81b8-d79eae370412",
+                group: "5df9089d-75e1-4d97-a9fd-32b7aa86bc34",
                 AddDanmakuHistory: (name: string, text: string) => {
                     console.log("Push danmaku");
                     this.$refs.DanmakuComp!.PushDanmaku({

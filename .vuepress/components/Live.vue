@@ -1,10 +1,16 @@
 <template>
     <Artplayer @get-instance="getInstance" :option="option" :style="style" :danmaku-option="danmakuOption" />
+    <ClearUserNameComponent />
+    <DanmakuComponent ref="DanmakuComp" />
 </template>
 
 <script lang="ts">
 import Artplayer from "./Artplayer.vue";
+import ClearUserNameComponent from "./ClearUserNameComponent.vue";
+import DanmakuComponent from "./DanmakuComponent.vue";
 import type Option from 'artplayer/types/option';
+
+let danmakuId = 0;
 
 export default {
     data() {
@@ -47,11 +53,20 @@ export default {
             },
             danmakuOption: {
                 group: "4463403c-aff8-c16d-0933-4636405ff116",
+                AddDanmakuHistory: (name: string, text: string) => {
+                    console.log("Push danmaku");
+                    this.$refs.DanmakuComp!.PushDanmaku({
+                        id: danmakuId++,
+                        text: name + ": " + text,
+                    });
+                },
             }
         };
     },
     components: {
         Artplayer,
+        DanmakuComponent,
+        ClearUserNameComponent,
     },
     methods: {
         getInstance(art: any) {

@@ -66,7 +66,7 @@ export default {
     components: {
         Artplayer,
         DanmakuComponent,
-        ClearUserNameComponent
+        ClearUserNameComponent,
     },
     methods: {
         getInstance(art: any) {

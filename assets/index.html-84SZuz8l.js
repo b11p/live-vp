@@ -1,1 +1,0 @@
-import{_ as c,r as t,o,c as n,a as r,b as e,d as s}from"./app-E2jmUVNn.js";const i={},_=e("h1",{id:"ave-mujica",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#ave-mujica","aria-hidden":"true"},"#"),s(" Ave Mujica")],-1);function d(l,u){const a=t("Ave-Mujica");return o(),n("div",null,[_,r(a)])}const h=c(i,[["render",d],["__file","index.html.vue"]]);export{h as default};

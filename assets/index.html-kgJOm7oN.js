@@ -1,0 +1,1 @@
+import{_ as a,r as t,o as n,c,a as r,f as s,b as e,d}from"./app-GEtguJAX.js";const _={},i=e("h1",{id:"mygo",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#mygo","aria-hidden":"true"},"#"),d(" MyGO!!!!!")],-1);function m(l,f){const o=t("MyGO");return n(),c("div",null,[i,r(o),s(" 推流节点提示：cn2 ")])}const x=a(_,[["render",m],["__file","index.html.vue"]]);export{x as default};

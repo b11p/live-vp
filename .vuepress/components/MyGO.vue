@@ -16,7 +16,7 @@ export default {
     data() {
         let option: Option = {
             container: '.artplayer-app',
-            url: 'https://live-flv.b11p.com/live/mygo.flv',
+            url: 'https://live-vps4.b11p.com/live/mygo.flv',
             // type: "mpegts",
             theme: "#3388bb",
             isLive: true,
@@ -29,15 +29,23 @@ export default {
                 {
                     default: true,
                     html: 'IPv4',
-                    url: 'https://live4.b11p.com/live/mygo.flv',
+                    url: 'https://live-vps4.b11p.com/live/mygo.flv',
+                },
+                {
+                    html: 'IPv4+IPv6',
+                    url: 'https://live-vps.b11p.com/live/mygo.flv',
                 },
                 {
                     html: 'Cloudflare',
-                    url: 'https://live-cf.b11p.com/live/mygo.flv',
+                    url: 'https://live-vps-cf.b11p.com/live/mygo.flv',
                 },
                 {
                     html: "HLS (iOS 兼容)",
-                    url: "https://live-flv.b11p.com/live/mygo.m3u8",
+                    url: "https://live-vps4.b11p.com/live/mygo.m3u8",
+                },
+                {
+                    html: "HLS + 双栈",
+                    url: "https://live-vps.b11p.com/live/mygo.m3u8",
                 },
             ],
         };

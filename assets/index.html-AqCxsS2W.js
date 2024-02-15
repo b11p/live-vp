@@ -1,1 +1,0 @@
-import{_ as t,r as o,o as i,c as n,a as s,b as e,d as c}from"./app-GEtguJAX.js";const r={},m=e("h1",{id:"sumimi",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#sumimi","aria-hidden":"true"},"#"),c(" Sumimi")],-1);function d(_,l){const a=o("Sumimi");return i(),n("div",null,[m,s(a)])}const h=t(r,[["render",d],["__file","index.html.vue"]]);export{h as default};

@@ -4,8 +4,6 @@
 
 <Live></Live>
 
-前端使用 Artplayer 播放器，弹幕历史、用户名编辑等功能未移植完成。
-
 mpegts.js 估计延迟 2 秒。
 
 如果无法播放，请刷新页面。
@@ -42,6 +40,20 @@ mpegts.js 估计延迟 2 秒。
 订阅链接（但是可能没有人会用）
 
 https://outlook.live.com/owa/calendar/00000000-0000-0000-0000-000000000000/078f1c11-205c-496e-996e-30b0a5b1ffc9/cid-D8FD15B2A646FB32/calendar.ics
+
+---
+推流参数：
+
+一般是 CRF/CQP + 上限码率。具体参数经常更改，但上限码率一般在 10M 以内。
+
+最近使用的参数：
+
+- 编码器：AMD HW H.264 (AVC)
+- CQP：20
+- 视频码率：9920 Kbps
+- 音频码率：320 Kbps
+- Preset: Quality
+- Profile: high
 
 ---
 TODO:

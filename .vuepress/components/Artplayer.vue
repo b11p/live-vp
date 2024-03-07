@@ -100,6 +100,7 @@ onMounted(async () => {
                         mpegtsPlayer.attachMediaElement(video);
                         mpegtsPlayer.load();
                         dispose = () => {
+                            mpegtsPlayer.pause(); // 可能可以缓解重新播放后无声
                             mpegtsPlayer.unload();
                             mpegtsPlayer.detachMediaElement();
                             mpegtsPlayer.destroy();

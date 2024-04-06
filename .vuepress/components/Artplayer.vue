@@ -199,7 +199,8 @@ onMounted(async () => {
         for (let q of artPlayerOption.quality) {
             q.default = undefined;
             if (!q.url.endsWith(".flv")) {
-                artPlayerOption.type = undefined;
+                let dotIdx = q.url.lastIndexOf(".");
+                artPlayerOption.type = q.url.substring(dotIdx + 1);
                 artPlayerOption.url = q.url;
                 q.default = true;
                 break;

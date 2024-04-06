@@ -8,6 +8,7 @@ import artplayerPluginDanmaku from "artplayer-plugin-danmuku";
 import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue';
 import Hls from 'hls.js'
 import liveDan from "./Danmaku.vue";
+import Option from "artplayer/types/option";
 
 const emit = defineEmits(['get-instance']);
 
@@ -50,8 +51,7 @@ onMounted(async () => {
         }
         console.log("ended");
     };
-    // function InitArtplayer() {
-    art = new Artplayer({
+    let artPlayerOption: Option = {
         url: undefined as any,
 
         isLive: true,
@@ -74,8 +74,11 @@ onMounted(async () => {
                         }, {
                             liveBufferLatencyChasing: true,
                             enableStashBuffer: false,
-                            lazyLoadMaxDuration: 10,
-                            lazyLoad: true,
+                            lazyLoadMaxDuration: 180, // 这个值什么时候生效非常奇怪，所以我们先用默认值
+                            // https://github.com/xqq/mpegts.js/blob/494b9eb43d4527915ebed82cdaf6f4318419e360/src/player/loading-controller.ts#L98
+                            lazyLoad: true, // 如果开启，恢复加载时会请求 range，SRS 无法处理。实际上播放时已经加了重新加载逻辑，因此实际不会触发恢复加载
+                            // https://github.com/bilibili/flv.js/blob/42343088f22619cf014a057b3878fe3d320016a6/src/player/flv-player.js#L425
+                            autoCleanupSourceBuffer: true,
                         });
 
                         // configure error handling
@@ -188,7 +191,22 @@ onMounted(async () => {
         ],
         ...props.option,
         container: artRef.value,
-    }, function onReady(art) {
+    };
+    if ((artPlayerOption.type == "flv" || artPlayerOption.url.endsWith(".flv"))
+        && !mpegts.getFeatureList().mseLivePlayback
+        && artPlayerOption.quality) {
+        // iOS fallback.
+        for (let q of artPlayerOption.quality) {
+            q.default = undefined;
+            if (!q.url.endsWith(".flv")) {
+                artPlayerOption.type = undefined;
+                artPlayerOption.url = q.url;
+                q.default = true;
+                break;
+            }
+        }
+    }
+    art = new Artplayer(artPlayerOption, function onReady(art) {
         this.play();
     });
     art.on("video:ended", onVideoEnded);
@@ -196,8 +214,6 @@ onMounted(async () => {
         if (dispose) dispose();
     });
     instance.value = art;
-    // }
-    // InitArtplayer();
     nextTick(() => {
         emit('get-instance', instance.value);
     });
@@ -230,6 +246,17 @@ onMounted(async () => {
             console.log("Adding danmaku history:");
             console.log(danmu.text);
             props.danmakuOption.AddDanmakuHistory("我", danmu.text);
+        }
+    });
+    art.on('play', () => {
+        if (art.video.buffered.length > 1) {
+            console.log("Buffer count incorrect, try reloading.");
+            // onVideoEnded(null);
+        }
+        if (art.video.buffered.length == 1
+            && art.video.buffered.end(0) - art.video.currentTime >= 170) { // 这个值与 lazyLoadMaxDuration 相关
+            console.log("Buffer too long, try reloading.");
+            onVideoEnded(null);
         }
     });
 });

@@ -255,7 +255,7 @@ onMounted(async () => {
             // onVideoEnded(null);
         }
         if (art.video.buffered.length == 1
-            && art.video.buffered.end(0) - art.video.currentTime >= 170) { // 这个值与 lazyLoadMaxDuration 相关
+            && art.video.buffered.end(0) - art.video.currentTime >= 60) { // 这个值理应与 lazyLoadMaxDuration 相关，但是实际发现有时候缓冲 90 秒就停止了。前端，如此神奇！
             console.log("Buffer too long, try reloading.");
             onVideoEnded(null);
         }

@@ -1,1 +1,0 @@
-import{_ as s,r as a,o,c as n,a as c,b as e,d as r}from"./app-DP-NseLG.js";const d={},_=e("h1",{id:"test",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#test","aria-hidden":"true"},"#"),r(" Test")],-1);function i(l,m){const t=a("Mutsumi");return o(),n("div",null,[_,c(t)])}const h=s(d,[["render",i],["__file","index.html.vue"]]);export{h as default};

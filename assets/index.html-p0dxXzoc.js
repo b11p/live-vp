@@ -1,0 +1,1 @@
+import{_ as s,r as a,o,c as n,a as c,b as e,d as r}from"./app-zNq2XYeG.js";const i={},d=e("h1",{id:"mutsumi",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#mutsumi","aria-hidden":"true"},"#"),r(" Mutsumi")],-1);function u(_,m){const t=a("Mutsumi");return o(),n("div",null,[d,c(t)])}const h=s(i,[["render",u],["__file","index.html.vue"]]);export{h as default};

@@ -1,1 +1,0 @@
-import{_ as t,r as a,o as n,c,a as r,f as s,b as e,d}from"./app-DP-NseLG.js";const _={},i=e("h1",{id:"mygo",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#mygo","aria-hidden":"true"},"#"),d(" MyGO!!!!!")],-1);function m(l,f){const o=a("MyGO");return n(),c("div",null,[i,r(o),s(" 推流节点提示：vpst ")])}const p=t(_,[["render",m],["__file","index.html.vue"]]);export{p as default};

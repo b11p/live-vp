@@ -1,1 +1,0 @@
-import{_ as a,r as t,o as n,c,a as r,b as e,d as s}from"./app-UOJ1yjwj.js";const d={},_=e("h1",{id:"mygo",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#mygo","aria-hidden":"true"},"#"),s(" MyGO!!!!!")],-1);function i(l,m){const o=t("UHD");return n(),c("div",null,[_,r(o)])}const f=a(d,[["render",i],["__file","index.html.vue"]]);export{f as default};

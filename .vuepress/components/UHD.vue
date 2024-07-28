@@ -16,7 +16,7 @@ export default {
     data() {
         let option: Option = {
             container: '.artplayer-app',
-            url: 'https://live-vps4.b11p.com/live/4k.flv',
+            url: 'https://live-vps4.b11p.com/live/4k.m3u8',
             // type: "mpegts",
             theme: "#3388bb",
             isLive: true,
@@ -28,24 +28,20 @@ export default {
             quality: [
                 {
                     default: true,
-                    html: 'IPv4',
-                    url: 'https://live-vps4.b11p.com/live/4k.flv',
-                },
-                {
-                    html: 'IPv4+IPv6',
-                    url: 'https://live-vps.b11p.com/live/4k.flv',
-                },
-                {
-                    html: 'Cloudflare',
-                    url: 'https://live-vps-cf.b11p.com/live/4k.flv',
-                },
-                {
-                    html: "HLS (iOS 兼容)",
+                    html: "HLS (更稳定)",
                     url: "https://live-vps4.b11p.com/live/4k.m3u8",
                 },
                 {
                     html: "HLS + 双栈",
                     url: "https://live-vps.b11p.com/live/4k.m3u8",
+                },
+                {
+                    html: 'FLV (延迟更低)',
+                    url: 'https://live-vps4.b11p.com/live/4k.flv',
+                },
+                {
+                    html: 'FLV + 双栈',
+                    url: 'https://live-vps.b11p.com/live/4k.flv',
                 },
             ],
         };

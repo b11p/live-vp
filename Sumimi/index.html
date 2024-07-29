@@ -1,34 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="generator" content="VuePress 2.0.0-rc.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content="VuePress 2.0.0-rc.14" />
     <style>
       :root {
         --c-bg: #fff;
       }
+
       html.dark {
         --c-bg: #22272e;
       }
-      html, body {
+
+      html,
+      body {
         background-color: var(--c-bg);
       }
     </style>
     <script>
-      const userMode = localStorage.getItem('vuepress-color-scheme');
-			const systemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-			if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
-				document.documentElement.classList.toggle('dark', true);
-			}
+      const userMode = localStorage.getItem('vuepress-color-scheme')
+      const systemDarkMode =
+        window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches
+
+      if (userMode === 'light') {
+        document.documentElement.dataset.theme = 'light'
+      } else if (userMode === 'dark' || systemDarkMode) {
+        document.documentElement.classList.toggle('dark', true)
+        document.documentElement.dataset.theme = 'dark'
+      }
     </script>
     <title>Sumimi | 直播间</title><meta name="description" content="">
-    <link rel="preload" href="/assets/style-pBmjJHNx.css" as="style"><link rel="stylesheet" href="/assets/style-pBmjJHNx.css">
-    <link rel="modulepreload" href="/assets/app-CgXt985_.js"><link rel="modulepreload" href="/assets/index.html-ivKPwZFx.js"><link rel="modulepreload" href="/assets/index.html-fDMc81vU.js">
-    <link rel="prefetch" href="/assets/index.html-CBtcr6XQ.js" as="script"><link rel="prefetch" href="/assets/index.html-ZiQuDNGW.js" as="script"><link rel="prefetch" href="/assets/index.html-FGIJKOOj.js" as="script"><link rel="prefetch" href="/assets/index.html-7MHtdGmn.js" as="script"><link rel="prefetch" href="/assets/index.html-vzYBfAOi.js" as="script"><link rel="prefetch" href="/assets/index.html-S0SvKARu.js" as="script"><link rel="prefetch" href="/assets/index.html-H5vPNMNZ.js" as="script"><link rel="prefetch" href="/assets/404.html-r6aI8Oiv.js" as="script"><link rel="prefetch" href="/assets/index.html-EZE5TQrA.js" as="script"><link rel="prefetch" href="/assets/index.html-qdWy98d3.js" as="script"><link rel="prefetch" href="/assets/index.html-EfrrUwzb.js" as="script"><link rel="prefetch" href="/assets/index.html-Hlq_9P9P.js" as="script"><link rel="prefetch" href="/assets/index.html-O6Qw5dml.js" as="script"><link rel="prefetch" href="/assets/index.html-DcdHERP3.js" as="script"><link rel="prefetch" href="/assets/index.html-jw_AOsQs.js" as="script"><link rel="prefetch" href="/assets/404.html-LDUYVQ-p.js" as="script"><link rel="prefetch" href="/assets/Artplayer-YUitzbiN.js" as="script"><link rel="prefetch" href="/assets/Ave-Mujica--buJGTDN.js" as="script"><link rel="prefetch" href="/assets/ClearUserNameComponent-pn2q5S3Y.js" as="script"><link rel="prefetch" href="/assets/Crychic-_v0TSYkk.js" as="script"><link rel="prefetch" href="/assets/Danmaku-fPsjp8hJ.js" as="script"><link rel="prefetch" href="/assets/DanmakuComponent-sOwfmjzB.js" as="script"><link rel="prefetch" href="/assets/Live-9dBcZa4V.js" as="script"><link rel="prefetch" href="/assets/Mutsumi-wN4tbLnu.js" as="script"><link rel="prefetch" href="/assets/MyGO-hJXATVhh.js" as="script"><link rel="prefetch" href="/assets/Sumimi-eMd50kGf.js" as="script"><link rel="prefetch" href="/assets/TestRoom-9jW-nNn_.js" as="script"><link rel="prefetch" href="/assets/UHD-sfu3f_8V.js" as="script">
+    <link rel="preload" href="/assets/style-6n1laAql.css" as="style"><link rel="stylesheet" href="/assets/style-6n1laAql.css">
+    <link rel="modulepreload" href="/assets/app-T4Mi9Kae.js"><link rel="modulepreload" href="/assets/index.html-t8lBYxly.js">
+    <link rel="prefetch" href="/assets/index.html-DIPaRO22.js" as="script"><link rel="prefetch" href="/assets/index.html-G8MeG_5O.js" as="script"><link rel="prefetch" href="/assets/index.html-C360XOOo.js" as="script"><link rel="prefetch" href="/assets/index.html-BhsgriDt.js" as="script"><link rel="prefetch" href="/assets/index.html-C9h_LKAI.js" as="script"><link rel="prefetch" href="/assets/index.html-DYdoOdTg.js" as="script"><link rel="prefetch" href="/assets/index.html-SkN-kRwk.js" as="script"><link rel="prefetch" href="/assets/404.html-B0luxrzK.js" as="script"><link rel="prefetch" href="/assets/Artplayer-CMdvdLT0.js" as="script"><link rel="prefetch" href="/assets/Ave-Mujica-6IijruxR.js" as="script"><link rel="prefetch" href="/assets/ClearUserNameComponent-Bpy_uSa_.js" as="script"><link rel="prefetch" href="/assets/Crychic-BZsKFqUW.js" as="script"><link rel="prefetch" href="/assets/Danmaku-BAkS4-vg.js" as="script"><link rel="prefetch" href="/assets/DanmakuComponent-hqj0TEXr.js" as="script"><link rel="prefetch" href="/assets/Live-HUPt-es3.js" as="script"><link rel="prefetch" href="/assets/Mutsumi-CuzqDv6y.js" as="script"><link rel="prefetch" href="/assets/MyGO-kt5k-_hV.js" as="script"><link rel="prefetch" href="/assets/Sumimi-zTvUB7zj.js" as="script"><link rel="prefetch" href="/assets/TestRoom-BLe0ooKY.js" as="script"><link rel="prefetch" href="/assets/UHD-8C_NXKzB.js" as="script">
   </head>
   <body>
-    <div id="app"><!--[--><div class="theme-container no-navbar no-sidebar"><!--[--><!----><!--]--><div class="sidebar-mask"></div><!--[--><aside class="sidebar"><!----><!--[--><!--]--><!----><!--[--><!--]--></aside><!--]--><!--[--><main class="page"><!--[--><!--]--><div class="theme-default-content"><!--[--><!--]--><div><h1 id="sumimi" tabindex="-1"><a class="header-anchor" href="#sumimi" aria-hidden="true">#</a> Sumimi</h1><!--[--><div style="width:100%;aspect-ratio:16/9;margin:0;"></div><p hidden>你的用户名是：<span id="userNameSpan"></span> <button>清除用户名</button></p><div><p></p><details style="width:100%;"><summary>弹幕历史</summary><!--[--><!--]--></details></div><!--]--></div><!--[--><!--]--></div><footer class="page-meta"><!----><!----><!----></footer><!----><!--[--><!--]--></main><!--]--></div><!----><!--]--></div>
-    <script type="module" src="/assets/app-CgXt985_.js" defer></script>
+    <div id="app"><!--[--><div class="vp-theme-container no-navbar no-sidebar external-link-icon"><!--[--><!----><!--]--><div class="vp-sidebar-mask"></div><!--[--><aside class="vp-sidebar"><!----><!--[--><!--]--><!----><!--[--><!--]--></aside><!--]--><!--[--><main class="vp-page"><!--[--><!--]--><div class="theme-default-content"><!--[--><!--]--><div><h1 id="sumimi" tabindex="-1"><a class="header-anchor" href="#sumimi"><span>Sumimi</span></a></h1><!--[--><div style="width:100%;aspect-ratio:16/9;margin:0;"></div><p hidden>你的用户名是：<span id="userNameSpan"></span> <button>清除用户名</button></p><div><p></p><details style="width:100%;"><summary>弹幕历史</summary><!--[--><!--]--></details></div><!--]--></div><!--[--><!--]--></div><footer class="vp-page-meta"><!----><div class="vp-meta-item git-info"><!----><!----></div></footer><!----><!--[--><!--]--></main><!--]--></div><!--[--><!----><!--]--><!--]--></div>
+    <script type="module" src="/assets/app-T4Mi9Kae.js" defer></script>
   </body>
 </html>

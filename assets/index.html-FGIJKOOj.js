@@ -1,1 +1,0 @@
-const a=JSON.parse('{"key":"v-1321a674","path":"/Ave-Mujica/","title":"Ave Mujica","lang":"zh-CN","frontmatter":{},"headers":[],"git":{},"filePathRelative":"Ave-Mujica/README.md"}');export{a as data};

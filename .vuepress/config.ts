@@ -1,6 +1,8 @@
 import { path } from "@vuepress/utils";
-import { defaultTheme, defineUserConfig } from "vuepress"
+import { defaultTheme } from "@vuepress/theme-default"
+import { defineUserConfig } from "vuepress"
 import { registerComponentsPlugin } from "@vuepress/plugin-register-components"
+import { viteBundler } from '@vuepress/bundler-vite'
 
 export default defineUserConfig({
     locales: {
@@ -34,5 +36,6 @@ export default defineUserConfig({
         registerComponentsPlugin({
             componentsDir: path.resolve(__dirname, "./components")
         })
-    ]
+    ],
+    bundler: viteBundler(),
 })

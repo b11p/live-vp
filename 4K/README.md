@@ -12,3 +12,5 @@ FLV 在网络好的情况下延迟更低，这种延迟优化的代价是本地�
 若出现异常色块，则说明显卡解码有问题，已知 AMD 显卡硬解会出现这种问题，改用软解正常。
 
 Windows 系统推荐使用 Edge，对硬件解码支持最好，Firefox 可能无法播放。
+
+[视频文件下载](https://share.bleatingsheep.org/d?id=ueidhsRUaOFPyG7)

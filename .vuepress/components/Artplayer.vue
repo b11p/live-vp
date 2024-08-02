@@ -36,7 +36,7 @@ onMounted(async () => {
             art.plugins.artplayerPluginDanmuku.config({}).queue = [];
         }
     }
-    let onVideoEnded = e => {
+    let onVideoEnded = _e => {
         // if (dispose) {
         //     dispose();
         //     dispose = null;
@@ -255,7 +255,8 @@ onMounted(async () => {
             // onVideoEnded(null);
         }
         if (art.video.buffered.length == 1
-            && art.video.buffered.end(0) - art.video.currentTime >= 60) { // 这个值理应与 lazyLoadMaxDuration 相关，但是实际发现有时候缓冲 90 秒就停止了。前端，如此神奇！
+            && art.video.buffered.end(0) - art.video.currentTime >= 15) { // 这个值理应与 lazyLoadMaxDuration 相关，但是实际发现有时候缓冲 90 秒就停止了。前端，如此神奇！
+            // update: 当使用 4K 时，缓冲更短就停止了，所以我们使用较短的时间
             console.log("Buffer too long, try reloading.");
             onVideoEnded(null);
         }

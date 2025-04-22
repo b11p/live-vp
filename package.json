@@ -11,16 +11,16 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@vuepress/bundler-vite": "^2.0.0-rc.14",
-    "@vuepress/plugin-register-components": "^2.0.0-rc.37",
-    "@vuepress/theme-default": "^2.0.0-rc.40",
-    "vuepress": "^2.0.0-rc.14"
+    "@vuepress/bundler-vite": "^2.0.0-rc.21",
+    "@vuepress/plugin-register-components": "^2.0.0-rc.94",
+    "@vuepress/theme-default": "^2.0.0-rc.96",
+    "vuepress": "^2.0.0-rc.21"
   },
   "dependencies": {
     "@microsoft/signalr": "^7.0.14",
-    "artplayer": "^5.1.6",
-    "artplayer-plugin-danmuku": "^5.1.4",
-    "hls.js": "^1.5.13",
-    "mpegts.js": "^1.7.3"
+    "artplayer": "^5.2.3",
+    "artplayer-plugin-danmuku": "^5.1.6",
+    "hls.js": "^1.6.2",
+    "mpegts.js": "^1.8.0"
   }
 }

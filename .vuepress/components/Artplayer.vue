@@ -51,6 +51,27 @@ onMounted(async () => {
         }
         console.log("ended");
     };
+
+    // config danmaku
+    var danmakuSingleton = liveDan(
+        "https://live-danmaku.b11p.com/danmakuHub",
+        props.danmakuOption.group,
+        function (user, dan) {
+            // dan.border = false;
+            dan.time = undefined;
+            dan.color = '#FFFFFF';
+            console.log(dan);
+            art.plugins.artplayerPluginDanmuku.emit(dan);
+            props.danmakuOption.AddDanmakuHistory(user, dan.text);
+        },
+        function (danmakuList) {
+            for (let currentDan of danmakuList) {
+                // addDanmakuHistory(currentDan.user, currentDan.data.text, currentDan.time_stamp)
+                props.danmakuOption.AddDanmakuHistory(currentDan.user, currentDan.data.text);
+            }
+        },
+    );
+
     let artPlayerOption: Option = {
         url: undefined as any,
 
@@ -171,6 +192,15 @@ onMounted(async () => {
         plugins: [
             artplayerPluginDanmaku({
                 danmuku: [],
+                beforeEmit(danmu) {
+                    danmakuSingleton.send(danmu);
+                    if (props.danmakuOption.AddDanmakuHistory) {
+                        console.log("Adding danmaku history:");
+                        console.log(danmu.text);
+                        props.danmakuOption.AddDanmakuHistory("我", danmu.text);
+                    }
+                    return true;
+                },
                 speed: 5,
                 opacity: 1,
                 fontSize: 25,
@@ -178,13 +208,10 @@ onMounted(async () => {
                 mode: 0,
                 margin: ['2%', 60], // 弹幕上下边距，支持数字和百分比
                 antiOverlap: true, // 是否防重叠
-                useWorker: false, // 是否使用 web worker
                 synchronousPlayback: false, // 是否同步到播放速度
                 // filter: (danmu) => danmu.text.length < 50, // 弹幕过滤函数
                 lockTime: 1,
                 maxLength: 500,
-                minWidth: 200,
-                maxWidth: 0,
                 theme: "light",
                 ...props.danmakuOption,
             })
@@ -219,36 +246,6 @@ onMounted(async () => {
         emit('get-instance', instance.value);
     });
 
-    // config danmaku
-    var danmakuSingleton = liveDan(
-        "https://live-danmaku.b11p.com/danmakuHub",
-        props.danmakuOption.group,
-        function (user, dan) {
-            // dan.border = false;
-            dan.time = undefined;
-            dan.color = '#FFFFFF';
-            console.log(dan);
-            art.plugins.artplayerPluginDanmuku.emit(dan);
-            props.danmakuOption.AddDanmakuHistory(user, dan.text);
-        },
-        function (danmakuList) {
-            for (let currentDan of danmakuList) {
-                // addDanmakuHistory(currentDan.user, currentDan.data.text, currentDan.time_stamp)
-                props.danmakuOption.AddDanmakuHistory(currentDan.user, currentDan.data.text);
-            }
-        },
-    );
-    // danmakuSingleton.connection.on("ReceiveMessage", function (user, message) {
-    //     addDanmakuHistory(user, JSON.parse(message).text);
-    // });
-    art.on('artplayerPluginDanmuku:emit' as any, (danmu) => {
-        danmakuSingleton.send(danmu);
-        if (props.danmakuOption.AddDanmakuHistory) {
-            console.log("Adding danmaku history:");
-            console.log(danmu.text);
-            props.danmakuOption.AddDanmakuHistory("我", danmu.text);
-        }
-    });
     art.on('play', () => {
         if (art.video.buffered.length > 1) {
             console.log("Buffer count incorrect, try reloading.");

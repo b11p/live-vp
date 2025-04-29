@@ -16,7 +16,7 @@ export default {
     data() {
         let option: Option = {
             container: '.artplayer-app',
-            url: 'https://nas.qrihome.fun:32343/live/livestream.flv',
+            url: 'https://live.home.qri.moe:47290/live/livestream.flv',
             // type: "mpegts",
             theme: "#ea94b5",
             isLive: false,
@@ -29,7 +29,7 @@ export default {
                 {
                     default: true,
                     html: '默认',
-                    url: 'https://nas.qrihome.fun:32343/live/livestream.flv',
+                    url: 'https://live.home.qri.moe:47290/live/livestream.flv',
                 },
             ],
         };

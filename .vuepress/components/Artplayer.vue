@@ -154,10 +154,10 @@ onMounted(async () => {
                             // error
                             hls.on(Hls.Events.ERROR, (e, d) => {
                                 console.error({ e, d });
-                                if (!d.fatal) {
+                                let isPlaying = !art.video.paused;
+                                if (!d.fatal && isPlaying) {
                                     return;
                                 }
-                                let isPlaying = !art.video.paused;
                                 console.log("isPlaying: " + isPlaying);
                                 setTimeout(() => {
                                     reload();
@@ -247,15 +247,13 @@ onMounted(async () => {
     });
 
     art.on('play', () => {
-        if (art.video.buffered.length > 1) {
-            console.log("Buffer count incorrect, try reloading.");
-            // onVideoEnded(null);
-        }
-        if (art.video.buffered.length == 1
-            && art.video.buffered.end(0) - art.video.currentTime >= 15) { // 这个值理应与 lazyLoadMaxDuration 相关，但是实际发现有时候缓冲 90 秒就停止了。前端，如此神奇！
-            // update: 当使用 4K 时，缓冲更短就停止了，所以我们使用较短的时间
-            console.log("Buffer too long, try reloading.");
-            onVideoEnded(null);
+        for (let i = 0; i < art.video.buffered.length; i++) {
+            if (art.video.buffered.end(i) - art.video.currentTime >= 15) { // 这个值理应与 lazyLoadMaxDuration 相关，但是实际发现有时候缓冲 90 秒就停止了。前端，如此神奇！
+                // update: 当使用 4K 时，缓冲更短就停止了，所以我们使用较短的时间
+                console.log("Buffer too long, try reloading.");
+                onVideoEnded(null);
+                break;
+            }
         }
     });
 });

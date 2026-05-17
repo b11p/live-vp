@@ -144,8 +144,8 @@ onMounted(async () => {
                         if (Hls.isSupported()) {
                             console.log("Loading hls player");
                             const hls = new Hls({
-                                liveSyncDuration: 10,
-                                liveMaxLatencyDuration: 20,
+                                liveSyncDurationCount: 1,
+                                liveMaxLatencyDurationCount: 4,
                                 // maxLiveSyncPlaybackRate: 1, // 在 iOS 上会造成问题
                                 // lowLatencyMode: true,
                                 liveDurationInfinity: true,
